@@ -8,7 +8,6 @@ export default defineConfig({
     rollupOptions: {
       external: [            
         'easymde/dist/easymde.min.css',
-        'react-simplemde-editor',
         'easymde'
       ]
     }
