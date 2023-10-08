@@ -4,7 +4,6 @@ import axios from 'axios';
 import { v4 as uuidV4 } from 'uuid';
 import CreatableReactSelect from 'react-select/creatable';
 import SimpleMDE from 'react-simplemde-editor';
-import 'easymde/dist/easymde.min.css';
 import useAuth from '../../hooks/useAuth.jsx';
 
 const AddPost = () => {
