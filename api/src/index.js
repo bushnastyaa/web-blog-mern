@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 mongoose
-  .connect("mongodb+srv://anastasia:nWdeF6tbMpiP8wX@blog.jtaybjo.mongodb.net/blog?retryWrites=true&w=majority")
+  .connect(process.env.MONGO_URL)
   .then(console.log('Connected to database'))
   .catch((err) => console.log('DB error', err));
 
