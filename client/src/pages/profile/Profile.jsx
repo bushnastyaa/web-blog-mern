@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import ProfilePost from "../../components/ProfilePost.jsx";
 import Sidebar from "../../components/Sidebar.jsx";
 import Modal from '../../components/Modal';
+import { apiPath } from '../../routes';
 
 const Profile = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Profile = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get(`http://localhost:5000/api/users/${id}`);
+      const { data } = await axios.get(`${apiPath}/users/${id}`);
       setUser(data.user);
       setUserPosts(data.userPosts);
     };
@@ -25,7 +26,7 @@ const Profile = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you really wanna delete your account?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/users/${auth.user._id}`, {
+        await axios.delete(`${apiPath}/users/${auth.user._id}`, {
           data : {username: auth.user.username}
         });
         auth.logOut()

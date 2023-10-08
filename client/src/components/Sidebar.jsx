@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SidebarPost from "./SidebarPost.jsx";
-import computer from '../images/retro-computer.jpg'
+import computer from '../images/retro-computer.jpg';
+import { apiPath } from '../routes/index.js';
 
 const Sidebar = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/posts/popular');
+      const { data } = await axios.get(`${apiPath}/posts/popular`);
       setPosts(data);
     }
     fetchPosts();

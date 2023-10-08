@@ -6,6 +6,7 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import Input from '../../components/Input';
 import AuthForm from '../../components/AuthForm';
+import { apiPath } from '../../routes';
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -28,7 +29,7 @@ const Register = () => {
 
   const onSubmit = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', values);
+      const response = await axios.post(`${apiPath}/auth/register`, values);
       localStorage.setItem('userInfo', JSON.stringify(response.data));
       auth.logIn();
       navigate('/');

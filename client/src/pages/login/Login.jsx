@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import Input from '../../components/Input';
 import AuthForm from '../../components/AuthForm';
+import { apiPath } from '../../routes';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -27,7 +28,7 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', values);
+      const response = await axios.post(`${apiPath}/auth/login`, values);
       localStorage.setItem('userInfo', JSON.stringify(response.data));
       auth.logIn();
       navigate('/');

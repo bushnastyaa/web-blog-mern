@@ -4,6 +4,7 @@ import PostCard from '../../components/PostCard.jsx';
 import Sidebar from '../../components/Sidebar.jsx';
 import workplace from '../../images/workplace.png';
 import SearchBar from '../../components/SearchBar.jsx';
+import { apiPath } from '../../routes/index.js';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/posts');
+      const { data } = await axios.get(`${apiPath}/posts`);
       setPosts(data);
     }
     fetchPosts();

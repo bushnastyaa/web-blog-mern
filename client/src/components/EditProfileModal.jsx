@@ -19,7 +19,7 @@ const EditProfileModal = ({ user, onClose }) => {
         profileImg: image
       }
       await axios.put(
-        `http://localhost:5000/api/users/${user._id}`, 
+        `${apiPath}/users/${user._id}`, 
         userUpd
       );
       navigate(0);

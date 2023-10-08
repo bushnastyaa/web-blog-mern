@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from 'uuid';
 import CreatableReactSelect from 'react-select/creatable';
 import SimpleMDE from 'react-simplemde-editor';
 import useAuth from '../../hooks/useAuth.jsx';
+import { apiPath } from '../../routes/index.js';
 
 const AddPost = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const AddPost = () => {
 
   useEffect(() => {
     const fetchTags = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/posts/tags');
+      const { data } = await axios.get(`${apiPath}/posts/tags`);
       setAvailableTags(data);
     }
     fetchTags();
@@ -66,8 +67,8 @@ const AddPost = () => {
       };
 
       const res = isEditing 
-      ? await axios.put(`http://localhost:5000/api/posts/${id}`, newPost)
-      : await axios.post('http://localhost:5000/api/posts', newPost);
+      ? await axios.put(`${apiPath}/posts/${id}`, newPost)
+      : await axios.post(`${apiPath}/posts`, newPost);
 
       const _id = isEditing ? id : res.data._id
 
@@ -79,7 +80,7 @@ const AddPost = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:5000/api/posts/${id}`)
+      axios.get(`${apiPath}/posts/${id}`)
         .then(({ data }) => {
           setTitle(data.post.title);
           setValue(data.post.desc);

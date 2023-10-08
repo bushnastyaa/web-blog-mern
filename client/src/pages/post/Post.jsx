@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar.jsx';
 import useAuth from '../../hooks/useAuth.jsx';
+import { apiPath } from '../../routes/index.js';
 
 const Post = () => {
   const [post, setPost] = useState({});
@@ -15,7 +16,7 @@ const Post = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const { data } = await axios.get(`http://localhost:5000/api/posts/${id}`);
+      const { data } = await axios.get(`${apiPath}/posts/${id}`);
       setPost(data.post);
       setUserPost(data.userPost);
     };
@@ -24,7 +25,7 @@ const Post = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`);
+      await axios.delete(`${apiPath}/posts/${id}`);
       navigate('/');
     } catch (err) {
       throw err;

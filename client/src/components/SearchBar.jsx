@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactSelect from "react-select";
 import axios from 'axios';
+import { apiPath } from '../routes';
 
 const SearchBar = ({ 
     title, 
@@ -12,7 +13,7 @@ const SearchBar = ({
 
   useEffect(() => {
     const fetchTags = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/posts/tags');
+      const { data } = await axios.get(`${apiPath}/posts/tags`);
       setAvailableTags(data);
     }
     fetchTags();
