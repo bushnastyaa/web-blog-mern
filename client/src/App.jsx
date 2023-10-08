@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { AuthProvider } from './contexts/AuthContext.jsx';
+import { AuthProvider } from './contexts/authContext.jsx';
 import Home from './pages/home/Home.jsx';
 import Post from './pages/post/Post.jsx';
 import AddPost from './pages/addPost/AddPost.jsx';
