@@ -52,7 +52,7 @@ const Profile = () => {
               className="rounded-3xl h-[120px] object-cover"
             />
 
-            {auth.user._id === user?._id && (
+            {auth?.user?._id === user?._id && (
               <div className="flex gap-2 flex-wrap max-sm:mt-5">
                 <Modal user={user} />
                 <button onClick={handleDelete} className="button py-3 cursor-pointer">
