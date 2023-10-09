@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 const SidebarPost = ({ post }) => {
   return (
     <>
       <span className="text-lg font-palanquin font-bold cursor-pointer">
-        <a href={`/post/${post._id}`}>{post.title}</a>
+        <Link to={`/post/${post._id}`}>{post.title}</Link>
       </span>
       <div className="mt-2 font-montserrat text-pale-gray text-xs">
         <span className="pr-4">{new Date(post.createdAt).toDateString()}</span>

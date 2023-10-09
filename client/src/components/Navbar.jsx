@@ -7,24 +7,22 @@ const Login = ({ handleClick }) => {
   const auth = useAuth();
 
   return (
-    auth.loggedIn
-      ? (
-        <ul className="flex justify-between items-center gap-5 
-        max-lg:hidden font-montserrat text-lg text-slate-gray">
-          <li><Link to="/"><i className="text-lg fas fa-search" /></Link></li>
+    <ul className="flex justify-between items-center gap-5 
+    max-lg:hidden font-montserrat text-lg text-slate-gray">
+      <li><Link to="/"><i className="text-lg fas fa-search" /></Link></li>
+      {auth.loggedIn ? (
+        <>
           <li><Link to="/addPost">Create new post</Link></li>
-          <li><a href={`/profile/${auth.user._id}`}>Profile</a></li>
+          <li><Link to={`/profile/${auth.user._id}`}>Profile</Link></li>
           <li><button onClick={handleClick}>Logout</button></li>
-        </ul>
-      )
-      : (
-        <ul className="flex justify-between items-center gap-5 
-        max-lg:hidden font-montserrat text-lg text-slate-gray">
-          <li><Link to="/"><i className="text-lg fas fa-search" /></Link></li>
+        </>
+      ) : (
+        <>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/register">Register</Link></li>
-        </ul>
-      )
+        </>
+      )}
+    </ul>
   );
 };
 
@@ -66,21 +64,21 @@ const Navbar = () => {
                 </div>
 
                 <div>
-                  {auth.loggedIn
-                    ? (
-                      <ul className="ml-[25%] text-xl font-montserrat text-slate-gray">
+                  <ul className="ml-[25%] text-xl font-montserrat text-slate-gray">
+                    {auth.loggedIn ? (
+                      <>
                         <li className="pb-7"><Link to="/" className="text-gold">Home</Link></li>
                         <li className="pb-7"><Link to="/addPost">Create new post</Link></li>
-                        <li className="pb-7"><a href={`/profile/${auth.user._id}`}>Profile</a></li>
+                        <li className="pb-7"><Link to={`/profile/${auth.user._id}`}>Profile</Link></li>
                         <li><button onClick={handleClick}>Logout</button></li>
-                      </ul>
-                    )
-                    : (
-                      <ul className="ml-[25%] text-xl font-montserrat text-slate-gray">
+                      </>
+                    ) : (
+                      <>
                         <li className="pb-7"><Link to="/login">Login</Link></li>
                         <li><Link to="/register">Register</Link></li>
-                      </ul>
+                      </>
                     )}
+                  </ul>
                 </div>
               </div>
             )}
