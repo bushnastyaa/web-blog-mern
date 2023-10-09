@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 const ProfilePost = ({ post }) => {
   return (
@@ -26,7 +27,10 @@ const ProfilePost = ({ post }) => {
         </div>
   
         <p className="font-varela text-[15px] leading-6 mt-4 text-primary line-clamp-4 text-ellipsis">
-          {post.desc}
+          <ReactMarkdown 
+            className="markdown" 
+            children={post.desc} 
+          />
         </p>
       </div>
     </div>
