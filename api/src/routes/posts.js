@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
   try {
     const posts = await PostModel
     .find()
-    .sort({ createdAt: "asc" });
+    .sort({ createdAt: "desc" });
 
     res.status(200).json(posts);
   } catch (err) {
