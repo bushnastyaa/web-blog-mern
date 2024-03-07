@@ -38,7 +38,10 @@ router.get('/popular', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const posts = await PostModel.find();
+    const posts = await PostModel
+    .find()
+    .sort({ createdAt: "asc" });
+
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
